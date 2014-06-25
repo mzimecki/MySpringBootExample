@@ -28,9 +28,13 @@ public class HelloController {
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
     public String add(@ModelAttribute("user") User user) {
-        if (null != user && null != user.getUserData()[1] && !user.getUserData()[1].isEmpty()) {
+        if (isUserValid(user)) {
         	repo.addUser(user.getUserData()[1]);
         }
         return "redirect:/";
     }
+
+	private boolean isUserValid(User user) {
+		return null != user && null != user.getUserData()[1] && !user.getUserData()[1].isEmpty();
+	}
 }
