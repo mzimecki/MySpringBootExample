@@ -1,22 +1,23 @@
 package com.zimek.springboot.service;
 
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserServiceRepository {
 	
-	private Map<String, User> users = new HashMap<String, User>();
+	private final Map<String, User> users = new ConcurrentHashMap<String, User>();
 	
-	public Map<String, User> getAllUsers() {
-		return users;
+	public synchronized Map<String, User> getAllUsers() {
+		return Collections.unmodifiableMap(users);
 	}
 	
 	public void addUser(String name) {
 		User u = new User(name);
-		users.put(u.getId(), u);
+		users.put(u.getUserData()[0], u);
 	}
 	
 }

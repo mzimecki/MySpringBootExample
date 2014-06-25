@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang ="en">
 <body>
-	<h1> List of users: </h1>
+	<h1> List of users</h1>
 	<#if users?has_content>
-		<#list users as u>
-			<h4>ID: ${u.getId()}, Name: ${u.getName()}</h4>
-		</#list>
+		<ul>
+			<#list users as u>
+				<li>ID: ${u.getUserData()[0]}, Name: ${u.getUserData()[1]}</li>
+			</#list>
+		</ul>
 	<#else>
-		No users added yet! Please use REST service to do so, for e.g. POST: /users?name=John
+		No users added yet! Please use REST service to do so, for e.g. POST: /users?name=John or the form below.
 	</#if>
+	
+	</br></br>
+	
+	<fieldset>
+    	<legend>Add User</legend>
+  		<form name="user" action="add" method="post">
+    		Name: <input type="text" name="name" /> <br/>
+	    	<input type="submit" value="Save" />
+  		</form>
+  	</fieldset>
 </body>
 </html>
