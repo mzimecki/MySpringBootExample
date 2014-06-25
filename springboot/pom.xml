@@ -43,7 +43,7 @@
 	</dependencies>
 
 	<properties>
-		<start-class>com.zimek.spring.boot.Application</start-class>
+		<start-class>com.zimek.springboot.Application</start-class>
 	</properties>
 
 	<build>
