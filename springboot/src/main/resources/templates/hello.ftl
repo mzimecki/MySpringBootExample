@@ -5,11 +5,11 @@
 	<#if users?has_content>
 		<ul>
 			<#list users as u>
-				<li>ID: ${u.getUserData()[0]}, Name: ${u.getUserData()[1]}</li>
+				<li>ID: ${u.getId()}, Name: ${u.getName()}</li>
 			</#list>
 		</ul>
 	<#else>
-		No users added yet! Please use REST service to do so, for e.g. POST: /users?name=John or the form below.
+		No users added yet! Please use REST service to do so, for e.g. POST {"name": "John"} using /users or the form below.
 	</#if>
 	
 	</br></br>

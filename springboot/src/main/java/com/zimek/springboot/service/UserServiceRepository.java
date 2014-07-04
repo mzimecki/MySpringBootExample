@@ -1,23 +1,14 @@
 package com.zimek.springboot.service;
 
-import java.util.Collections;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-@Repository
-public class UserServiceRepository {
+public interface UserServiceRepository extends CrudRepository<User, Long>, JpaRepository<User, Long> {
 	
-	private final Map<String, User> users = new ConcurrentHashMap<String, User>();
-	
-	public synchronized Map<String, User> getAllUsers() {
-		return Collections.unmodifiableMap(users);
-	}
-	
-	public void addUser(String name) {
-		User u = new User(name);
-		users.put(u.getUserData()[0], u);
-	}
+	public List<User> findAll();
+	public User save(User user);
+	public List<User> findByName(String name);
 	
 }

@@ -1,10 +1,12 @@
 package com.zimek.springboot;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,20 +23,20 @@ public class HelloController {
 	
 	@RequestMapping("/")
 	public String index(Map<String, Object> model) {
-		List<User> users = new ArrayList<User>(repo.getAllUsers().values());
-		model.put("users", users);
+		PageRequest page = new PageRequest(0, 20, new Sort(new Order(Direction.ASC, "name")));
+		model.put("users", repo.findAll(page).getContent());
 		return "hello";
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
     public String add(@ModelAttribute("user") User user) {
         if (isUserValid(user)) {
-        	repo.addUser(user.getUserData()[1]);
+        	repo.save(user);
         }
         return "redirect:/";
     }
 
 	private boolean isUserValid(User user) {
-		return null != user && null != user.getUserData()[1] && !user.getUserData()[1].isEmpty();
+		return null != user && null != user.getName() && !user.getName().isEmpty();
 	}
 }

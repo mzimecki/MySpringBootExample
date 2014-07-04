@@ -1,25 +1,40 @@
 package com.zimek.springboot.service;
 
-import java.util.UUID;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class User {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String id;
 	private String name;
 	
-	public User() {
+	protected User() {
 		
 	}
 	
 	public User(String name) {
-		this.id = UUID.randomUUID().toString();
+		this.name = name;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
 		this.name = name;
 	}
 	
-	public synchronized String [] getUserData() {
-		return new String [] {this.id, this.name};
-	}
-
-	public synchronized void setName(String name) {
-		this.name = name;
-	}
 }
