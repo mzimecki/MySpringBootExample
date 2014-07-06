@@ -9,5 +9,4 @@ public interface UserServiceRepository extends JpaRepository<User, Long> {
 	public List<User> findAll();
 	public User save(User user);
 	public List<User> findByName(String name);
-	
 }
