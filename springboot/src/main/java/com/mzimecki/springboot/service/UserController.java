@@ -1,4 +1,4 @@
-package com.zimek.springboot.service;
+package com.mzimecki.springboot.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;

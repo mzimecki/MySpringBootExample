@@ -5,7 +5,7 @@
 	<#if users?has_content>
 		<ul>
 			<#list users as u>
-				<li>ID: ${u.getId()}, Name: ${u.getName()}</li>
+				<li>Id: ${u.getId()}, Name: ${u.getName()}</li>
 			</#list>
 		</ul>
 	<#else>

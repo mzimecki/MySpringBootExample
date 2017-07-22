@@ -1,4 +1,4 @@
-package com.zimek.springboot;
+package com.mzimecki.springboot;
 
 import java.util.Map;
 
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.zimek.springboot.service.User;
-import com.zimek.springboot.service.UserServiceRepository;
+import com.mzimecki.springboot.service.User;
+import com.mzimecki.springboot.service.UserServiceRepository;
 
 @Controller
 public class HelloController {

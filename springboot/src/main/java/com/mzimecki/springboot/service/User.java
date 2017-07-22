@@ -1,4 +1,4 @@
-package com.zimek.springboot.service;
+package com.mzimecki.springboot.service;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
